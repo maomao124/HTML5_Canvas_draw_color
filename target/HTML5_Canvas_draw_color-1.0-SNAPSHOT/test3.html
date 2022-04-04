@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<!--
+Project name(项目名称)：HTML5_Canvas_draw_color
+  File name(文件名): test3
+  Authors(作者）: mao
+  Author QQ：1296193245
+  GitHub：https://github.com/maomao124/
+  Date(创建日期)： 2022/4/4
+  Time(创建时间)： 18:25
+  Description(描述)： 无
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid lime;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="400" height="400">
+    浏览器不支持画布功能
+</canvas>
+
+<script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    //createRadialGradient()方法使用两个圆的大小和坐标创建径向渐变。
+    // 此方法返回一个CanvasGradient 。要应用于形状，必须首先将渐变分配给fillStyle或strokeStyle属性。
+    // 注意：梯度坐标是全局的，即相对于当前坐标空间。应用于形状时，坐标不相对于形状的坐标。
+    // x0 – 起始圆的 x 轴坐标。
+    // y0 - 起始圆的 y 轴坐标。
+    // r0 - 起始圆的半径。必须是非负的和有限的。
+    // x1 – 结束圆的 x 轴坐标。
+    // y1 – 结束圆的 y 轴坐标。
+    // r1 - 结束圆的半径。必须是非负的和有限的。
+    var radar = ctx.createRadialGradient(50, 50, 20, 70, 70, 60);
+    //addColorStop()方法将由offset和color定义的新颜色停止添加到给定的画布渐变。
+    //offset – 一个介于0和1之间的数字（包括 0 和 1），表示色标的位置。
+    // 0代表渐变的开始， 1代表结束；如果数字超出该范围，则会INDEX_SIZE_ERR 。
+    // color – 一个CSS  <color>值，表示停靠点的颜色。
+    // 如果无法将值解析为 CSS <color>值，则会引发SYNTAX_ERR 。
+    radar.addColorStop(0, "rgba(0,0,255,0.6)");
+    radar.addColorStop(0.9, 'rgba(0,0,255,1)');
+    radar.addColorStop(1, 'rgba(0,0,255,0)');
+
+
+    ctx.fillStyle = radar;
+    ctx.fillRect(0, 0, 150, 150);
+
+
+    // createLinearGradient()方法沿连接两个给定坐标的线创建渐变。
+    // 此方法返回一个线性CanvasGradient 。
+    // 要应用于形状，必须首先将渐变分配给fillStyle或strokeStyle属性。
+    // 注意：梯度坐标是全局的，即相对于当前坐标空间。应用于形状时，坐标不相对于形状的坐标。
+    // x0 – 起点的 x 轴坐标。
+    // y0 – 起点的 y 轴坐标。
+    // x1 – 终点的 x 轴坐标。
+    // y1 – 终点的 y 轴坐标。
+    var linear = ctx.createLinearGradient(150, 0, 300, 150);
+    linear.addColorStop(0, "rgb(0,0,255)");
+    linear.addColorStop(1, 'rgb(255,0,0)');
+
+    ctx.fillStyle = linear;
+    ctx.fillRect(150, 0, 150, 150);
+</script>
+</body>
+</html>
