@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<!--
+Project name(项目名称)：HTML5_Canvas_draw_color
+  File name(文件名): test1
+  Authors(作者）: mao
+  Author QQ：1296193245
+  GitHub：https://github.com/maomao124/
+  Date(创建日期)： 2022/4/4
+  Time(创建时间)： 18:16
+  Description(描述)： 无
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid lime;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="400" height="400">
+    浏览器不支持画布功能
+</canvas>
+
+<script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    for (var i = 0; i < 5; i++)
+    {
+        var green = 255 - 51 * i;
+
+        //设置线条颜色
+        ctx.strokeStyle = "rgb(0," + green + ",255)";
+        //绘制空心圆
+        ctx.beginPath();
+        ctx.arc(40 + 40 * i, 30, 20, 0, Math.PI * 2, true);
+        ctx.stroke();
+
+        //设置填充颜色
+        ctx.fillStyle = "rgb(0," + green + ",255)";
+        //绘制实心矩形
+        ctx.fillRect(20 + 40 * i, 60, 40, 40);
+    }
+</script>
+</body>
+</html>
